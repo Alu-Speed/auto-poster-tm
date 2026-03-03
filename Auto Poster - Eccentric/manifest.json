@@ -1,0 +1,38 @@
+// En cas de problème avec l'extension: support@aluspeed.be
+// Ou https://github.com/Alu-Speed
+
+{
+    "manifest_version": 3,
+    "name": "Auto Poster (Eccentric)",
+    "version": "0.3.9",
+    "description": "Automatise la publication des pannes sur le forum Transport Manager",
+    "author": "Alu-Speed",
+    "permissions": ["scripting", "tabs", "activeTab", "storage"],
+    "host_permissions": [
+        "https://forum.transport-manager.net/*",
+        "https://transport-manager.net/jeu/breakdown.php"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://transport-manager.net/jeu/breakdown.php*",
+      		"https://forum.transport-manager.net/thread-*.html"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["icon.png", "background.jpg", "pannes.json"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
